@@ -297,7 +297,18 @@ function ProductList({ onHomeClick }) {
                                         <div className='product-title'>{plant.name}</div>
                                         <div className='product-description'>{plant.description}</div>
                                         <div className='product-cost'>{plant.cost}</div>
-                                        <button className='product-button' onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                        <button 
+                                            className={`product-button ${isItemInCart ? 'disabled' : ''}`} 
+                                            onClick={() => handleAddToCart(plant)}
+                                            disabled={isItemInCart}
+                                            style={{
+                                            backgroundColor: isItemInCart ? '#95a5a6' : '#4CAF50',
+                                            color: 'white',
+                                            cursor: isItemInCart ? 'not-allowed' : 'pointer'
+                                            }}
+                                        >
+                                            {isItemInCart ? 'Added to Cart' : 'Add to Cart'}
+                                        </button>
                                     </div>
                                 ))}
                             </div>
